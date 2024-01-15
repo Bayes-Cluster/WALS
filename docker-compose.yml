@@ -1,0 +1,14 @@
+version: "3.0"
+services:
+  mesocp:
+    container_name: mesocp
+    # image: registry.cn-hangzhou.aliyuncs.com/bayes-cluster/mesocp:1.0
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    user: 'root'
+    ports:
+      - '3838:3838'
+    volumes:
+      - './shiny_logs:/var/log/shiny-server'
