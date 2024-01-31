@@ -1,0 +1,1 @@
+install.packages(c("shiny", "shinydashboard", "shinydisconnect", "knitr", "bslib", "ggplot2", "plotly", "leaflet", "lubridate", "scales", "rgeos", "tidyr", "DT", "dplyr", "thematic"))
