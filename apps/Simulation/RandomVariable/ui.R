@@ -2,9 +2,9 @@ source("global.R")
 
 thematic::thematic_shiny(font = "auto")
 
-ui <- navbarPage("Simulation - Chapter 3",
+ui <- navbarPage("Simulation - Random Variable Generation",
                  theme = bs_theme(version = 4, bootswatch="minty"),
-                 tabPanel("Example 3.1",
+                 tabPanel("Example 1",
                    sidebarLayout(
                      sidebarPanel(
                        HTML('<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Licence Creative Commons" style="border-width:0"
@@ -25,15 +25,15 @@ ui <- navbarPage("Simulation - Chapter 3",
                                         style='padding:5px; font-size:80% color: #fff; background-color: #cbcec1; border-color: #cbcec1'))
                      ),
                      mainPanel(
-                       fluidRow(column(12, uiOutput("example3_1")),
-                                column(12, plotlyOutput("histPlot3_1")))
+                       fluidRow(column(12, uiOutput("example1")),
+                                column(12, plotlyOutput("histPlot1")))
                      )
                    )
                  ),
-                 tabPanel("Example 3.2",
+                 tabPanel("Example 2",
                           sidebarLayout(
                             sidebarPanel(
-                              numericInput("lambda3_2", "Exponential's \\(\\lambda\\):", min = 0.1, max = 5, value = 0.6667),
+                              numericInput("lambda2", "Exponential's \\(\\lambda\\):", min = 0.1, max = 5, value = 2),
                               hr(),
                               HTML('<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Licence Creative Commons" style="border-width:0"
                                       src="http://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"/></a> This work of <span xmlns:cc="http://creativecommons.org/ns#"
@@ -53,16 +53,17 @@ ui <- navbarPage("Simulation - Chapter 3",
                                                style='padding:5px; font-size:80% color: #fff; background-color: #cbcec1; border-color: #cbcec1'))
                             ),
                             mainPanel(
-                              fluidRow(column(12, uiOutput("example3_2")),
-                                       column(12, plotlyOutput("histplot3_2")),
-                                       column(12, plotlyOutput("qqplot3_2")))
+                              fluidRow(column(12, uiOutput("example2")),
+                                       column(12, plotlyOutput("histplot2")),
+                                       column(12, plotlyOutput("qqplot2")))
                             )
                           )
                  ),
-                 tabPanel("Example 3.7",
+                 tabPanel("Example 7",
                    withMathJax(),
                    sidebarLayout(
                      sidebarPanel(
+                       width = 3,
                        numericInput("alpha", "Gamma's \\(\\alpha\\):", min = 0.1, max = 5, value = 1.5),
                        numericInput("beta", "Gamma's \\(\\beta\\):", min = 0.1, max = 5, value = 1),
                        numericInput("lambda", "Exponential's \\(\\lambda\\):", min = 0.1, max = 5, value = 0.6667),
@@ -89,13 +90,14 @@ ui <- navbarPage("Simulation - Chapter 3",
                      ),
                      
                      mainPanel(
+                       width = 9,
                        fluidRow(
-                         column(12, uiOutput("example3_7"))
+                         column(12, uiOutput("example7"))
                        ),
                        fluidRow(
-                         column(6, plotlyOutput("densityPlot")),
-                         column(6, plotlyOutput("histPlot")),
-                         column(12, plotlyOutput("simulation"))
+                         column(6, plotlyOutput("densityplot7")),
+                         column(6, plotlyOutput("histplot7")),
+                         column(12, plotlyOutput("simulation7"))
                        )
                      )
                   )

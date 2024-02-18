@@ -3,11 +3,11 @@ library(ggplot2)
 server <- function(input, output) {
   
   ##### 3.1 #####
-  output$example3_1 <- renderUI({
-    withMathJax(includeMarkdown("example/3-1.md"))
+  output$example1 <- renderUI({
+    withMathJax(includeMarkdown("example/1.md"))
   })
   
-  output$histPlot3_1 <- renderPlotly({
+  output$histPlot1 <- renderPlotly({
     N <- 10000
     u <- runif(N)
     x <- u^(1/3) # Generate random sample from specified distribution
@@ -29,15 +29,15 @@ server <- function(input, output) {
   })
   
   ##### 3.2 #####
-  output$example3_2 <- renderUI({
-    withMathJax(includeMarkdown("example/3-2.md"))
+  output$example2 <- renderUI({
+    withMathJax(includeMarkdown("example/2.md"))
   })
   
-  output$histplot3_2 <- renderPlotly({
+  output$histplot2 <- renderPlotly({
     N <- 10000
     lambda <- 2
     u <- runif(N)
-    x <- (-1/input$lambda3_2)*log(u)
+    x <- (-1/input$lambda2)*log(u)
     
     df <- data.frame(x = x)
     
@@ -52,11 +52,11 @@ server <- function(input, output) {
     ggplotly(p_hist)
   })
   
-  output$qqplot3_2 <- renderPlotly({
+  output$qqplot2 <- renderPlotly({
     N <- 5000
     lambda <- 2
     u <- runif(N)
-    x <- (-1/input$lambda3_2)*log(u)
+    x <- (-1/input$lambda2)*log(u)
     x <- sort(x)
     
     df_qq <- data.frame(
@@ -67,7 +67,7 @@ server <- function(input, output) {
     p_qq <- ggplot(df_qq, aes(x = Theoretical, y = Sample)) +
       geom_point(shape = 1) +
       geom_abline(intercept = 0, slope = 1, color = "red", linetype = "dashed") +
-      ggtitle(paste0("Q-Q plot for Exp(λ=", input$lambda3_2, ")")) +
+      ggtitle(paste0("Q-Q plot for Exp(λ=", input$lambda2, ")")) +
       xlab("Theoretical value from exponential distribution") +
       ylab("Sample") +
       theme_minimal()
@@ -75,12 +75,12 @@ server <- function(input, output) {
     ggplotly(p_qq)
   })
   
-  output$example3_7 <- renderUI({
+  output$example7 <- renderUI({
     ## Continuous
-    withMathJax(includeMarkdown("example/3-7.md"))
+    withMathJax(includeMarkdown("example/7.md"))
   })
   
-  output$densityPlot <- renderPlotly({
+  output$densityplot7 <- renderPlotly({
     x <- seq(input$range[1], input$range[2], length.out = 100)
     gamma_density <- dgamma(x, shape = input$alpha, rate = input$beta)
     exp_density <- dexp(x, rate = input$lambda)
@@ -112,7 +112,7 @@ server <- function(input, output) {
     ))
   })
   
-  output$histPlot <- renderPlotly({
+  output$histplot7 <- renderPlotly({
     # Generate random values from the gamma distribution
 
     sample_gamma <- rgamma(1000, shape = input$alpha, rate = input$beta)
@@ -144,7 +144,7 @@ server <- function(input, output) {
     ggplotly(p, tooltip = c("x", "y"))
   })
 
-  output$simulation <- renderPlotly({
+  output$simulation7<- renderPlotly({
     N <- 2000 
     lambda <- 2/3
     x <- seq(input$range[1], input$range[2], by = 0.01)
@@ -153,25 +153,34 @@ server <- function(input, output) {
     cc=c(3*((3/(2*pi*exp(1)))^(1/2)),2)
     sample_gamma <- rgamma(1000, shape = input$alpha, rate = input$beta)
     
+    
     plots <- lapply(1:2, function(j) {
-      u1 <- runif(N)
-      Y <- (-1/lambda)*log(u1)
-      u2 <- runif(N)
-      Z <- cc[j]*u2*g(Y) # Cug(x)
-      aa <- which(u2 < f(Y)/(cc[j]*g(Y)))
-      
-      data <- data.frame(x = c(x, Y[aa], Y[-aa]),
-                         y = c(f(x), Z[aa], Z[-aa]),
-                         group = c(rep('f(x)', length(x)), rep('Accepted', length(aa)), rep('Rejected', length(Y)-length(aa))))
-      
-      p <- ggplot(data, aes(x = x, y = y, colour = group)) +
-        geom_line(data = data[data$group == 'f(x)',], aes(x = x, y = y)) +
-        geom_point(data = data[data$group == 'Accepted',], aes(x = x, y = y), colour = 'red', size = 0.4) +
-        geom_point(data = data[data$group == 'Rejected',], aes(x = x, y = y), colour = 'blue', size = 0.4) +
-        scale_colour_manual(values = c('f(x)' = 'blue', 'Accepted' = 'red', 'Rejected' = 'blue')) +
-        theme_minimal() +
-        labs(title = paste('c=', round(cc[j], 2), ' Acceptance Rate=', length(aa)/N)) + 
-        xlim(range(sample_gamma))
+      frames <-
+      for (i in seq(1, N, length.out=10)){
+        u1 <- runif(N)
+        Y <- (-1/lambda)*log(u1)
+        u2 <- runif(N)
+        Z <- cc[j]*u2*g(Y) # Cug(x)
+        aa <- which(u2 < f(Y)/(cc[j]*g(Y)))
+        
+        data <- data.frame(x = c(x, Y[aa], Y[-aa]),
+                           y = c(f(x), Z[aa], Z[-aa]),
+                           group = c(rep('f(x)', length(x)), rep('Accepted', length(aa)), rep('Rejected', length(Y)-length(aa))))
+        
+        p <- ggplot(data, aes(x = x, y = y, colour = group)) +
+          geom_line(data = data[data$group == 'f(x)',], aes(x = x, y = y)) +
+          geom_point(data = data[data$group == 'Accepted',], aes(x = x, y = y), colour = 'red', size = 0.4) +
+          geom_point(data = data[data$group == 'Rejected',], aes(x = x, y = y), colour = 'blue', size = 0.4) +
+          scale_colour_manual(values = c('f(x)' = 'blue', 'Accepted' = 'red', 'Rejected' = 'blue')) +
+          theme_minimal() +
+          labs(title = paste('c=', round(cc[j], 2), ' Acceptance Rate=', length(aa)/N)) + 
+          xlim(range(sample_gamma))
+        frames[[i]] <- list(data=list(p), name=as.character(i))
+      }
+      p <- ggplotly(p) %>%
+        animation_opts(frame = 100, redraw = TRUE) %>%
+        animation_slider(currentvalue = list(prefix = "Iteration: ")) %>%
+        animation_button(x = 1, xanchor = "right", y = 0, yanchor = "bottom")
       
       return(p)
     })

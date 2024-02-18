@@ -1,0 +1,27 @@
+.blur {    
+	-webkit-filter: blur(2px); /* Chrome, Opera */
+	-moz-filter: blur(2px);
+	-ms-filter: blur(2px);    
+		filter: blur(2px);
+	opacity:0.8;
+	filter: alpha(opacity=80);
+}
+
+.vertical-center {
+	min-height: 80%;  /* Fallback for browsers do NOT support vh unit */
+	min-height: 80vh; /* These two lines are counted as one :-)       */
+	display: flex;
+	align-items: center;
+}
+
+.stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: auto;
+    content: "";
+    background-color: rgba(0,0,0,0);
+}
