@@ -1,11 +1,7 @@
 library(ggplot2)
 
 server <- function(input, output) {
-  # Create a Progress object
-  progress <- shiny::Progress$new()
-  # Make sure it closes when we exit this reactive, even if there's an error
-  on.exit(progress$close())
-  shinyalert("Welcome", "Click the Red Button to run the simulation", type = "info")
+
   ##### 3.1 #####
   output$example1 <- renderUI({
     withMathJax(includeMarkdown("example/1.md"))

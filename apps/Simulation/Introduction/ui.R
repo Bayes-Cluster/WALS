@@ -63,8 +63,8 @@ ui <- navbarPage(title="Simulation - Introduction",
                                                style='padding:5px; font-size:80% color: #fff; background-color: #cbcec1; border-color: #cbcec1'))
                             ),
                             mainPanel(
-                              fluidRow(column(6, plotOutput("exp")),
-                                       column(6, plotOutput("conv")))
+                              fluidRow(column(12, plotOutput("exp")),
+                                       column(12, plotOutput("conv")))
                             )
                           )
                  ),
