@@ -1,7 +1,11 @@
 library(ggplot2)
 
 server <- function(input, output) {
-  
+  # Create a Progress object
+  progress <- shiny::Progress$new()
+  # Make sure it closes when we exit this reactive, even if there's an error
+  on.exit(progress$close())
+  shinyalert("Welcome", "Click the Red Button to run the simulation", type = "info")
   ##### 3.1 #####
   output$example1 <- renderUI({
     withMathJax(includeMarkdown("example/1.md"))
@@ -145,8 +149,8 @@ server <- function(input, output) {
   })
 
   output$simulation7<- renderPlotly({
-    N <- 2000 
-    lambda <- 2/3
+    N <- 4000 
+    lambda <- input$lambda
     x <- seq(input$range[1], input$range[2], by = 0.01)
     f <- function(x) { (2/sqrt(pi))*(x^(1/2))*exp(-x) }
     g <- function(x) { (2/3)*exp(-2*x/3) }
@@ -156,8 +160,8 @@ server <- function(input, output) {
     
     p_list <- lapply(1:2, function(j) {
       pdata <- data.frame()
-      for (i in seq(1, N, by = 200)) { # Adjust iteration step for smoother animation
-        u1 <- runif(N)
+      for (i in seq(1, N, by = 100)) { # Adjust iteration step for smoother animation
+        u1 <- runif(i)
         Y <- (-1/lambda) * log(u1)
         u2 <- runif(N)
         Z <- cc[j] * u2 * g(Y) # Cug(x)
@@ -169,8 +173,6 @@ server <- function(input, output) {
       # Generate plot for this j value
       p <- ggplot(pdata, aes(x = x, y = y, frame = iteration)) +
         geom_point(aes(color = iteration), size = 0.4) +
-        theme_minimal() +
-        labs(title = paste('c=', round(cc[j], 2))) +
         xlim(range(sample_gamma))
       
       ggplotly(p, tooltip = "text") %>%
