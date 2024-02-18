@@ -12,6 +12,8 @@ ADD ./frontend/fig/ /srv/shiny-server/fig/
 
 RUN rm -rf /srv/shiny-server/0*
 
+RUN R -e 'install.packages(c("shinyalert", "shinythemes"))'
+
 # copy the apps
 ADD ./apps/ /srv/shiny-server/apps/
 
