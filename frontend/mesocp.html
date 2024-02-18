@@ -5,12 +5,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Modern Elementary Statistics</title>
+        <title>Simulation</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="https://uic.edu.cn/images/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/js/bootstrap.min.js"></script>
         <link href="css/styles.css" rel="stylesheet" />
-		<link href="css/custom.css" rel="stylesheet" />
+		<style>
+		.blur {    
+    		-webkit-filter: blur(2px); /* Chrome, Opera */
+       		-moz-filter: blur(2px);
+        	-ms-filter: blur(2px);    
+            	filter: blur(2px);
+			opacity:0.8;
+			filter: alpha(opacity=80);}
+		.vertical-center {
+  			min-height: 80%;  /* Fallback for browsers do NOT support vh unit */
+  			min-height: 80vh; /* These two lines are counted as one :-)       */
+  			display: flex;
+  			align-items: center;}
+		</style>
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -29,90 +44,70 @@
             </div>
         </nav>
         <!-- Page Content-->
-        <div class="container px-4 px-lg-5">
-        <br>     
-		<br>
+        <div class="container px-4 px-lg-5 vertical-center">
 		<!-- Content Row-->
-            <div class="row gx-4 gx-lg-5 vertical-center">
+            <div class="row gx-4 gx-lg-5">
                 <div class="col-md-4 mb-5">
-                    <div class="card" style="min-height: 15vh">
-                        <div class="card-body">
-                            <img class="card-img-top blur" src="fig/ANOVA.png" alt="Card image">
-                            <div class="card-img-overlay">
-                                <h3 class="card-title">Distributions</h3>
-                                <p class="card-text">Common continuous distributions and discrete distributions</p>
-                                <a href="apps/Distribution" class="stretched-link"></a>
-                            </div>
+                    <div class="card" style="min-height: 15rem;">
+                        <div class="card-body d-flex flex-column">
+                        <h4 class="card-title">Distributions</h4>
+                        <p class="card-text">Common continuous and discrete distributions</p>
+                        <a href="apps/MES/Distributions"  class="mt-auto align-self-end btn-block btn btn-primary">Go to Introduction</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
-                    <div class="card" style="min-height: 15vh">
-                        <div class="card-body">
-                            <img class="card-img-top blur" src="fig/ANOVA.png" alt="Card image">
-                                <div class="card-img-overlay">
-                                <h3 class="card-title">Data Visualization</h3>
-                                <p class="card-text">Big data visualization, such as dynamic plot of spatial data, take Covid-19 data as example</p>
-                            <a href="apps/COVID" class="stretched-link"></a>
-                            </div>
+                    <div class="card" style="min-height: 15rem;">
+                        <div class="card-body d-flex flex-column">
+                            <h4 class="card-title">Spatial Data Visualization</h4>
+                            <p class="card-text">Big data visualization, such as dynamic plot of spatial data, take COVID-19 as example</p>
+                            <a href="apps/MES/DataVisualization" class="mt-auto align-self-end btn-block btn btn-primary">Go to Random Variables</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
-                    <div class="card" style="min-height: 15vh">
-                        <div class="card-body">
-                            <img class="card-img-top blur" src="fig/ANOVA.png" alt="Card image">
-                                <div class="card-img-overlay">
-                                <h3 class="card-title">Confidence Interval</h3>
-                                <p class="card-text">Dynamic demonstration of interval estimation, i.e., the change in confidence intervals of the overall mean and overall proportion with different samples the significance of the confidence level</p>
-                            <a href="apps/CI" class="stretched-link"></a>
-                            </div>
+                    <div class="card" style="min-height: 15rem;">
+                        <div class="card-body d-flex flex-column">
+                        <h4 class="card-title">Confidence Interval</h4>
+                        <p class="card-text">Dynamic demonstration of interval estimation, i.e., the change in confidence intervals of the overall mean and overall proportion with different samples the significance of the confidence level</p>
+                        <a href="apps/MES/ConfidenceInterval" class="mt-auto align-self-end btn-block btn btn-primary">Go to Variance Reduction</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
-                    <div class="card img-fluid" style="min-height: 15vh">
-                        <div class="card-body">
-                            <img class="card-img-top blur" src="fig/ANOVA.png" alt="Card image">
-                                <div class="card-img-overlay">
-                                <h3 class="card-title">Linear Regression</h3>
-                                <p class="card-text">Explore the correlation between variables, including how correlation coefficients and regression equations change with changes in data distribution</p>
-                            <a href="apps/Regression" class="stretched-link"></a>
-                            </div>
+                    <div class="card" style="min-height: 15rem;">
+                        <div class="card-body d-flex flex-column">
+                        <h4 class="card-title">Linear Regression</h4>
+                        <p class="card-text">Explore the correlation between variables, including how correlation coefficients and regression equations change with changes in data distribution</p>
+                        <a href="apps/MES/LinearRegression" class="mt-auto align-self-end btn-block btn btn-primary">Go to Variance Reduction</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
-                    <div class="card img-fluid" style="min-height: 15vh">
-                        <div class="card-body">
-                            <img class="card-img-top blur" src="fig/ANOVA.png" alt="Card image">
-                                <div class="card-img-overlay">
-                                <h3 class="card-title">Hypothesis Testing</h3>
-                                <p class="card-text">Interative plot for identifing the p-values, Type I and Type II errors, and test efficacy</p>
-                            <a href="apps/Hypothesis" class="stretched-link"></a>
-                            </div>
+                    <div class="card" style="min-height: 15rem;">
+                        <div class="card-body d-flex flex-column">
+                        <h4 class="card-title">Hypothesis Test</h4>
+                        <p class="card-text">Interactive plot for identifing the p-values, Type-I and Type-II error, and test efficacy</p>
+                        <a href="apps/MES/HpothesisTest" class="mt-auto align-self-end btn-block btn btn-primary">Go to Variance Reduction</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
-                    <div class="card img-fluid" style="min-height: 15vh">
-                        <div class="card-body">
-                            <img class="card-img-top blur" src="fig/ANOVA.png" alt="Card image">
-                                <div class="card-img-overlay">
-                                <h3 class="card-title">Analysis of Variance</h3>
-                                <p class="card-text">One-way ANOVA to test for differences among the means of several populations(also referred to as "groups")</p>
-                            <a href="apps/ANOVA" class="stretched-link"></a>
-                            </div>
+                    <div class="card" style="min-height: 15rem;">
+                        <div class="card-body d-flex flex-column">
+                        <h4 class="card-title">Analysis of Variance</h4>
+                        <p class="card-text">One-way ANOVA to test for differences among the means of serveral populations (also referred to as "group")</p>
+                        <a href="apps/MES/ANOVA" class="mt-auto align-self-end btn-block btn btn-primary">Go to Variance Reduction</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
+        <footer class="py-5 bg-dark fixed-bottom">
             <div class="container px-4 px-lg-5">
-		    <p class="m-0 text-center text-white">The service is run transparaently from <a href="https://githu.com/Bayes-Cluster/MES" style="text-decoration:none; color=red">Bayes-Cluster/MES</a> on <a href="https://github.com" style="text-decoration:none">GitHub</a></p>
-		    <p class="m-0 text-center text-white">Copyright &copy; 2018-<script>document.write(new Date().getFullYear())</script> <a href="https://dst.uic.edu.cn/en/undergraduate_programmes/stat/introduction.htm" style="text-decoration:none"> BNU-HKBU UIC STAT </a> & <a href="https://github.com/Bayes-Cluster" style="text-decoration:none"> USBC Maintenance Group </a></p></div>
+		    <p class="m-0 text-center text-white">The service is run transparaently from <a href="https://githu.com/Bayes-Cluster/WALS" style="text-decoration:none; color=red">Bayes-Cluster/WALS</a> on <a href="https://github.com" style="text-decoration:none">GitHub</a></p>
+		    <p class="m-0 text-center text-white">Copyright &copy; 2018-<script>document.write(new Date().getFullYear())</script> <a href="https://fst.uic.edu.cn/stat_en/" style="text-decoration:none"> BNU-HKBU UIC STAT </a> & <a href="https://github.com/Bayes-Cluster" style="text-decoration:none"> USBC Maintenance Group </a></p></div>
 		</footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
