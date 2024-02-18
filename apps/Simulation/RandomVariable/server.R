@@ -154,42 +154,33 @@ server <- function(input, output) {
     sample_gamma <- rgamma(1000, shape = input$alpha, rate = input$beta)
     
     
-    plots <- lapply(1:2, function(j) {
-      frames <-
-      for (i in seq(1, N, length.out=10)){
+    p_list <- lapply(1:2, function(j) {
+      pdata <- data.frame()
+      for (i in seq(1, N, by = 200)) { # Adjust iteration step for smoother animation
         u1 <- runif(N)
-        Y <- (-1/lambda)*log(u1)
+        Y <- (-1/lambda) * log(u1)
         u2 <- runif(N)
-        Z <- cc[j]*u2*g(Y) # Cug(x)
+        Z <- cc[j] * u2 * g(Y) # Cug(x)
         aa <- which(u2 < f(Y)/(cc[j]*g(Y)))
         
-        data <- data.frame(x = c(x, Y[aa], Y[-aa]),
-                           y = c(f(x), Z[aa], Z[-aa]),
-                           group = c(rep('f(x)', length(x)), rep('Accepted', length(aa)), rep('Rejected', length(Y)-length(aa))))
-        
-        p <- ggplot(data, aes(x = x, y = y, colour = group)) +
-          geom_line(data = data[data$group == 'f(x)',], aes(x = x, y = y)) +
-          geom_point(data = data[data$group == 'Accepted',], aes(x = x, y = y), colour = 'red', size = 0.4) +
-          geom_point(data = data[data$group == 'Rejected',], aes(x = x, y = y), colour = 'blue', size = 0.4) +
-          scale_colour_manual(values = c('f(x)' = 'blue', 'Accepted' = 'red', 'Rejected' = 'blue')) +
-          theme_minimal() +
-          labs(title = paste('c=', round(cc[j], 2), ' Acceptance Rate=', length(aa)/N)) + 
-          xlim(range(sample_gamma))
-        frames[[i]] <- list(data=list(p), name=as.character(i))
+        pdata <- rbind(pdata, data.frame(x = Y[aa], y = Z[aa], iteration = i))
       }
-      p <- ggplotly(p) %>%
+      
+      # Generate plot for this j value
+      p <- ggplot(pdata, aes(x = x, y = y, frame = iteration)) +
+        geom_point(aes(color = iteration), size = 0.4) +
+        theme_minimal() +
+        labs(title = paste('c=', round(cc[j], 2))) +
+        xlim(range(sample_gamma))
+      
+      ggplotly(p, tooltip = "text") %>%
         animation_opts(frame = 100, redraw = TRUE) %>%
         animation_slider(currentvalue = list(prefix = "Iteration: ")) %>%
         animation_button(x = 1, xanchor = "right", y = 0, yanchor = "bottom")
-      
-      return(p)
     })
     
-    # Combine the plots (you will need the patchwork library for this)
-    combined_plot <- patchwork::wrap_plots(plots[[1]], plots[[2]])
-    
-    # Convert the combined ggplot object to a Plotly object
-    ggplotly(combined_plot)
+    # For simplicity, just return the first plot
+    return(p_list[[1]])
   })
   
 }
