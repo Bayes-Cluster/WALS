@@ -1,8 +1,7 @@
 version: "3.0"
 services:
-  mesocp:
-    container_name: mesocp
-    # image: registry.cn-hangzhou.aliyuncs.com/bayes-cluster/mesocp:1.0
+  wals-server:
+    image: bayes-cluster/wals-server:latest
     build:
       context: .
       dockerfile: Dockerfile
