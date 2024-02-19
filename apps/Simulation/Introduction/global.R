@@ -62,7 +62,7 @@ plot.buffon_experiment <- function(obj){
   
   plot(NA, xlab = "x", ylab = "y", xlim = c(-obj$plane/2, obj$plane/2), 
        ylim = c(-obj$plan/2, obj$plan/2), 
-       main = title)
+       main = title, cex.main=2)
   abline(h = (-obj$plan):obj$plan, lty = 3)
   
   for (i in 1:B){
@@ -91,7 +91,7 @@ converge <- function(B = 2084, plane_width = 10, seed = 1777, M = 12){
   
   plot(NA, xlim = c(1,B), ylim = pi + c(-3/4, 3/4), type = "l", col = "darkblue",
        ylab = bquote(hat(pi)[j]),
-       xlab = "j", main = "Buffon\'s needle experiment")
+       xlab = "j", font.main = 1, main = "Convergence Plot", cex.main=2)
   grid()
   
   for (i in 1:M){
