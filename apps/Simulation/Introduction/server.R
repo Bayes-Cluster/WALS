@@ -8,7 +8,7 @@ server <- function(input, output) {
   # Make sure it closes when we exit this reactive, even if there's an error
   on.exit(progress$close())
   
-  shinyalert("Welcome", "Click the Red Button to run the simulation", type = "info")
+  shinyalert("Welcome", "Click the 'Run Simulation' to run the simulation", type = "info")
   
   pointsData <- reactiveVal(NULL)  # Initialize with NULL
   

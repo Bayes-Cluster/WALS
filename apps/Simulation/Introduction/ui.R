@@ -32,7 +32,7 @@ ui <- navbarPage(title="Simulation - Introduction",
                             ),
                           mainPanel(
                             fluidRow(column(12, uiOutput("example1")),
-                                     column(12, plotlyOutput("piPlot")))
+                                     column(12, div(plotlyOutput("piPlot"), align="center")))
                             )
                           )
                  ),
