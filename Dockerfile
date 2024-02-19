@@ -17,5 +17,8 @@ RUN R -e 'install.packages(c("shinyalert", "shinythemes"))'
 # copy the apps
 ADD ./apps/ /srv/shiny-server/apps/
 
+# solve permission problem
+RUN chown -R shiny:shiny /srv/shiny-server
+
 # run app
 CMD ["/usr/bin/shiny-server"]
