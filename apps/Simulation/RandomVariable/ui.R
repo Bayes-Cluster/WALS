@@ -69,7 +69,6 @@ ui <- navbarPage("Simulation - Random Variable Generation",
                        numericInput("lambda", "Exponential's \\(\\lambda\\):", min = 0.1, max = 5, value = 0.6667),
                        numericInput("c", "Constant \\(c\\):", min = 0.1, max = 5, value = 1.258),
                        sliderInput("range", "Range:", min = -5, max = 10, value = c(0, 5)),
-                       actionButton("simulate7", "Run Simulation", icon = icon("rocket")),
                        hr(),
                        HTML('<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Licence Creative Commons" style="border-width:0"
                                     src="http://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"/></a> This work of <span xmlns:cc="http://creativecommons.org/ns#"
