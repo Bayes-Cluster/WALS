@@ -8,6 +8,9 @@
         <title>Simulation</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="https://uic.edu.cn/images/favicon.ico" />
+        <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/js/bootstrap.min.js"></script>
+        <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
 		<style>
@@ -45,57 +48,60 @@
         <div class="container px-4 px-lg-5 vertical-center">
 		<!-- Content Row-->
             <div class="row gx-4 gx-lg-5">
-                <div class="col-md-4 mb-5">
-                    <div class="card" style="min-height: 15rem;">
-                        <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Introduction</h5>
-                        <p class="card-text">Several typical and interesting simulation cases are introduced.</p>
-                        <a href="apps/Simulation/Introduction" class="mt-auto align-self-end btn-block btn btn-primary">Go to Introduction</a>
+                <div class="row">
+                    <h1> Simulation </h1>
+                    <div class="col-md-4 mb-5">
+                        <div class="card" style="min-height: 15rem;">
+                            <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Introduction</h5>
+                            <p class="card-text">Several typical and interesting simulation cases are introduced.</p>
+                            <a href="apps/Simulation/Introduction" class="mt-auto align-self-end btn-block btn btn-primary"><i class="fa-solid fa-rocket"></i> Try it</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <div class="card" style="min-height: 15rem;">
-                        <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Random Variables</h5>
-                        <p class="card-text">Generate random variables from specified probability distributions including various discrete/continuous univariate distributions and some multivariate distributions.</p>
-                        <a href="apps/Simulation/RandomVariable" class="mt-auto align-self-end btn-block btn btn-primary">Go to Random Variables</a>
+                    <div class="col-md-4 mb-5">
+                        <div class="card" style="min-height: 15rem;">
+                            <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Random Variables</h5>
+                            <p class="card-text">Generate random variables from specified probability distributions including various discrete/continuous univariate distributions and some multivariate distributions.</p>
+                            <a href="apps/Simulation/RandomVariable" class="mt-auto align-self-end btn-block btn btn-primary"><i class="fa-solid fa-rocket"></i> Try it</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <div class="card" style="min-height: 15rem;">
-                        <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Variance Reduction</h5>
-                        <p class="card-text">Techniques aim to improve on the usual simulation estimators by finding ones having the same mean and smaller variances. </p>
-                        <a href="apps/Simulation/VarianceReduction" class="mt-auto align-self-end btn-block btn btn-primary">Go to Variance Reduction</a>
+                    <div class="col-md-4 mb-5">
+                        <div class="card" style="min-height: 15rem;">
+                            <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Variance Reduction</h5>
+                            <p class="card-text">Techniques aim to improve on the usual simulation estimators by finding ones having the same mean and smaller variances. </p>
+                            <a href="apps/Simulation/VarianceReduction" class="mt-auto align-self-end btn-block btn btn-primary"><i class="fa-solid fa-rocket"></i> Try it</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <div class="card" style="min-height: 15rem;">
-                        <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Resampling Techniques</h5>
-                        <p class="card-text">Resampling methods treat an observed sample as a finite population, and random samples are generated (resampled) from it to estimate population characteristics and make inferences about the sampled population.</p>
-                        <a href="apps/Simulation/Resampling" class="mt-auto align-self-end btn-block btn btn-primary">Go to Variance Reduction</a>
+                    <div class="col-md-4 mb-5">
+                        <div class="card" style="min-height: 15rem;">
+                            <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Resampling Techniques</h5>
+                            <p class="card-text">Resampling methods treat an observed sample as a finite population, and random samples are generated (resampled) from it to estimate population characteristics and make inferences about the sampled population.</p>
+                            <a href="apps/Simulation/Resampling" class="mt-auto align-self-end btn-block btn btn-primary"><i class="fa-solid fa-rocket"></i> Try it</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <div class="card" style="min-height: 15rem;">
-                        <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Markov Chain Monte Carlo</h5>
-                        <p class="card-text">The MCMC approach to sampling from target density is to construct a Markov chain with stationary distribution, and run the chain for a sufficiently long time until the chain converges (approximately) to its stationary distribution.</p>
-                        <a href="apps/Simulation/MCMC" class="mt-auto align-self-end btn-block btn btn-primary">Go to Variance Reduction</a>
+                    <div class="col-md-4 mb-5">
+                        <div class="card" style="min-height: 15rem;">
+                            <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Markov Chain Monte Carlo</h5>
+                            <p class="card-text">The MCMC approach to sampling from target density is to construct a Markov chain with stationary distribution, and run the chain for a sufficiently long time until the chain converges (approximately) to its stationary distribution.</p>
+                            <a href="apps/Simulation/MCMC" class="mt-auto align-self-end btn-block btn btn-primary"><i class="fa-solid fa-rocket"></i> Try it</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <div class="card" style="min-height: 15rem;">
-                        <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Quasi-Monte Carlo methods</h5>
-                        <p class="card-text">Number-theoretic methods or Quasi-Monte Carlo (QMC) methods are proposed as the alternative approaches to the MC method.</p>
-                        <a href="apps/Simulation/QuasiMC" class="mt-auto align-self-end btn-block btn btn-primary">Go to Variance Reduction</a>
+                    <div class="col-md-4 mb-5">
+                        <div class="card" style="min-height: 15rem;">
+                            <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Quasi-Monte Carlo methods</h5>
+                            <p class="card-text">Number-theoretic methods or Quasi-Monte Carlo (QMC) methods are proposed as the alternative approaches to the MC method.</p>
+                            <a href="apps/Simulation/QuasiMC" class="mt-auto align-self-end btn-block btn btn-primary"><i class="fa-solid fa-rocket"></i> Try it</a>
+                            </div>
                         </div>
                     </div>
                 </div>
